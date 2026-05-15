@@ -504,7 +504,7 @@ footer span { color: var(--accent2); }
     <div class="progress-track">
       <div class="progress-fill" id="progressFill"></div>
     </div>
-    <span class="progress-count" id="progressCount">0 / 12 concluídos</span>
+    <span class="progress-count" id="progressCount">0 / 38 concluídos</span>
   </div>
 </header>
 
@@ -516,6 +516,34 @@ footer span { color: var(--accent2); }
       <div class="roadmap-node active">
         <div class="rm-phase">Agora</div>
         <div class="rm-name">Base Java</div>
+      </div>
+      <div class="roadmap-arrow">→</div>
+    </div>
+    <div class="roadmap-step">
+      <div class="roadmap-node">
+        <div class="rm-phase">Agora</div>
+        <div class="rm-name">Testes</div>
+      </div>
+      <div class="roadmap-arrow">→</div>
+    </div>
+    <div class="roadmap-step">
+      <div class="roadmap-node">
+        <div class="rm-phase">Contínuo</div>
+        <div class="rm-name">Boas Práticas</div>
+      </div>
+      <div class="roadmap-arrow">→</div>
+    </div>
+    <div class="roadmap-step">
+      <div class="roadmap-node">
+        <div class="rm-phase">Contínuo</div>
+        <div class="rm-name">Soft Skills</div>
+      </div>
+      <div class="roadmap-arrow">→</div>
+    </div>
+    <div class="roadmap-step">
+      <div class="roadmap-node">
+        <div class="rm-phase">1–6 meses</div>
+        <div class="rm-name">Banco Avançado</div>
       </div>
       <div class="roadmap-arrow">→</div>
     </div>
@@ -658,10 +686,310 @@ footer span { color: var(--accent2); }
     </div>
   </div>
 
-  <!-- FASE 2 -->
-  <div class="phase-block" id="phase2">
+  <!-- FASE TESTES -->
+  <div class="phase-block" id="phase-testes">
     <div class="phase-header">
       <div class="phase-num">02</div>
+      <div class="phase-meta">
+        <div class="phase-timeline">// Agora — Em paralelo com a base Java</div>
+        <div class="phase-name">Testes Unitários & Qualidade de Código</div>
+        <div class="phase-desc">Uma das habilidades mais exigidas e menos dominadas por júniors. Saber testar código diferencia você imediatamente em processos seletivos técnicos.</div>
+      </div>
+    </div>
+
+    <div class="cards-grid">
+
+      <!-- JUnit 5 + Mockito -->
+      <div class="card free">
+        <div class="card-check">
+          <button class="check-btn" onclick="toggleDone(this)" title="Marcar como concluído">✓</button>
+        </div>
+        <div class="card-top">
+          <div class="card-icon">🧪</div>
+          <div class="badges">
+            <span class="badge badge-free">Gratuito</span>
+            <span class="badge badge-hot">🔥 Exigido em vagas</span>
+          </div>
+        </div>
+        <div class="card-name">JUnit 5 + Mockito — Testes unitários em Java</div>
+        <div class="card-org">YouTube / Udemy</div>
+        <div class="card-desc">JUnit 5 é o framework padrão de testes em Java. Mockito permite simular dependências nos testes. Juntos formam a base de qualquer código Java de qualidade. Poucos júniors sabem — é um diferencial enorme.</div>
+        <div class="card-footer">
+          <div class="card-price">💰 <strong>Gratuito</strong> no YouTube</div>
+          <div class="card-links">
+            <a href="https://www.youtube.com/results?search_query=junit+5+mockito+java+tutorial" target="_blank" class="btn-link primary">→ Ver no YouTube</a>
+            <a href="https://www.udemy.com/topic/junit/" target="_blank" class="btn-link">Curso Udemy</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testes de integração Spring Boot -->
+      <div class="card free">
+        <div class="card-check">
+          <button class="check-btn" onclick="toggleDone(this)" title="Marcar como concluído">✓</button>
+        </div>
+        <div class="card-top">
+          <div class="card-icon">🔬</div>
+          <div class="badges">
+            <span class="badge badge-free">Gratuito</span>
+          </div>
+        </div>
+        <div class="card-name">Testes de Integração com Spring Boot Test</div>
+        <div class="card-org">YouTube — Amigoscode</div>
+        <div class="card-desc">Testa o comportamento real da aplicação com banco de dados e contexto Spring. @SpringBootTest, @DataJpaTest, MockMvc para testar endpoints REST. Essencial para projetos profissionais.</div>
+        <div class="card-footer">
+          <div class="card-price">💰 <strong>100% gratuito</strong></div>
+          <div class="card-links">
+            <a href="https://www.youtube.com/c/amigoscode" target="_blank" class="btn-link primary">→ Canal Amigoscode</a>
+            <a href="https://www.youtube.com/results?search_query=spring+boot+integration+testing" target="_blank" class="btn-link">Buscar tutoriais</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- TDD -->
+      <div class="card paid">
+        <div class="card-check">
+          <button class="check-btn" onclick="toggleDone(this)" title="Marcar como concluído">✓</button>
+        </div>
+        <div class="card-top">
+          <div class="card-icon">🔁</div>
+          <div class="badges">
+            <span class="badge badge-paid">Pago</span>
+          </div>
+        </div>
+        <div class="card-name">TDD — Test Driven Development com Java</div>
+        <div class="card-org">Udemy</div>
+        <div class="card-desc">Metodologia onde você escreve o teste antes do código. Muito valorizada em empresas de tecnologia. Muda a forma como você pensa sobre desenvolvimento e melhora drasticamente a qualidade do código.</div>
+        <div class="card-footer">
+          <div class="card-price">💰 <strong>R$ 30–70</strong> nas promoções</div>
+          <div class="card-links">
+            <a href="https://www.udemy.com/topic/test-driven-development/" target="_blank" class="btn-link primary">→ Ver cursos</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Clean Code -->
+      <div class="card paid">
+        <div class="card-check">
+          <button class="check-btn" onclick="toggleDone(this)" title="Marcar como concluído">✓</button>
+        </div>
+        <div class="card-top">
+          <div class="card-icon">✨</div>
+          <div class="badges">
+            <span class="badge badge-paid">Livro</span>
+            <span class="badge badge-hot">🔥 Leitura obrigatória</span>
+          </div>
+        </div>
+        <div class="card-name">Clean Code — Robert C. Martin (Uncle Bob)</div>
+        <div class="card-org">Livro / Amazon</div>
+        <div class="card-desc">O livro mais recomendado da área de desenvolvimento. Ensina como escrever código limpo, legível e manutenível. Qualquer dev que já leu reconhece o impacto que faz na qualidade do código do dia a dia.</div>
+        <div class="card-footer">
+          <div class="card-price">💰 <strong>R$ 60–90</strong> (livro físico ou digital)</div>
+          <div class="card-links">
+            <a href="https://www.amazon.com.br/C%C3%B3digo-limpo-Robert-C-Martin/dp/8576082675" target="_blank" class="btn-link primary">→ Ver na Amazon</a>
+            <a href="https://www.youtube.com/results?search_query=clean+code+resumo+português" target="_blank" class="btn-link">Resumo YouTube</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOLID -->
+      <div class="card free">
+        <div class="card-check">
+          <button class="check-btn" onclick="toggleDone(this)" title="Marcar como concluído">✓</button>
+        </div>
+        <div class="card-top">
+          <div class="card-icon">🏛️</div>
+          <div class="badges">
+            <span class="badge badge-free">Gratuito</span>
+            <span class="badge badge-hot">🔥 Perguntado em entrevistas</span>
+          </div>
+        </div>
+        <div class="card-name">Princípios SOLID na prática com Java</div>
+        <div class="card-org">YouTube / Dev.to</div>
+        <div class="card-desc">Os 5 princípios SOLID são perguntados em praticamente todas as entrevistas técnicas para backend Java. Saber aplicá-los no código (não só decorar) é o que impressiona os entrevistadores.</div>
+        <div class="card-footer">
+          <div class="card-price">💰 <strong>100% gratuito</strong></div>
+          <div class="card-links">
+            <a href="https://www.youtube.com/results?search_query=solid+java+exemplos+práticos" target="_blank" class="btn-link primary">→ Ver no YouTube</a>
+            <a href="https://dev.to/t/solid" target="_blank" class="btn-link">Artigos Dev.to</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tip-box">
+      <span class="tip-icon">💡</span>
+      <span><strong>Dica de ouro:</strong> Adicione testes unitários nos seus projetos do GitHub — mesmo os acadêmicos. Um repositório com cobertura de testes mostra maturidade técnica muito acima do esperado para um júnior. É o detalhe que faz o recrutador técnico marcar entrevista.</span>
+    </div>
+  </div>
+
+  <!-- FASE SOFT SKILLS -->
+  <div class="phase-block" id="phase-soft">
+    <div class="phase-header">
+      <div class="phase-num">03</div>
+      <div class="phase-meta">
+        <div class="phase-timeline">// Contínuo — Desenvolver junto com as habilidades técnicas</div>
+        <div class="phase-name">Soft Skills & Carreira</div>
+        <div class="phase-desc">Habilidades comportamentais são tão importantes quanto as técnicas. Empresas contratam desenvolvedores que sabem trabalhar em equipe, comunicar e crescer continuamente.</div>
+      </div>
+    </div>
+
+    <div class="cards-grid">
+
+      <!-- Comunicação técnica -->
+      <div class="card free">
+        <div class="card-check">
+          <button class="check-btn" onclick="toggleDone(this)" title="Marcar como concluído">✓</button>
+        </div>
+        <div class="card-top">
+          <div class="card-icon">💬</div>
+          <div class="badges">
+            <span class="badge badge-free">Gratuito</span>
+            <span class="badge badge-hot">🔥 Diferencial enorme</span>
+          </div>
+        </div>
+        <div class="card-name">Comunicação técnica e escrita para devs</div>
+        <div class="card-org">YouTube / Notion / Medium</div>
+        <div class="card-desc">Saber explicar código, escrever documentação, dar e receber feedback técnico e se expressar em reuniões de equipe. Devs que comunicam bem crescem muito mais rápido na carreira.</div>
+        <div class="card-footer">
+          <div class="card-price">💰 <strong>100% gratuito</strong></div>
+          <div class="card-links">
+            <a href="https://www.youtube.com/results?search_query=comunicação+desenvolvedor+tech" target="_blank" class="btn-link primary">→ Ver no YouTube</a>
+            <a href="https://medium.com/tag/communication" target="_blank" class="btn-link">Artigos Medium</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Inglês técnico -->
+      <div class="card free">
+        <div class="card-check">
+          <button class="check-btn" onclick="toggleDone(this)" title="Marcar como concluído">✓</button>
+        </div>
+        <div class="card-top">
+          <div class="card-icon">🌐</div>
+          <div class="badges">
+            <span class="badge badge-free">Gratuito</span>
+          </div>
+        </div>
+        <div class="card-name">Inglês técnico para desenvolvedores</div>
+        <div class="card-org">YouTube / Duolingo / BBC Learning</div>
+        <div class="card-desc">Você já tem inglês avançado — agora é praticar o vocabulário técnico: code review, standup, sprint planning, pull request, documentação. Manter o inglês ativo abre portas para empresas internacionais.</div>
+        <div class="card-footer">
+          <div class="card-price">💰 <strong>100% gratuito</strong></div>
+          <div class="card-links">
+            <a href="https://www.youtube.com/results?search_query=english+for+software+developers" target="_blank" class="btn-link primary">→ Ver no YouTube</a>
+            <a href="https://www.bbc.co.uk/learningenglish" target="_blank" class="btn-link">BBC Learning</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Metodologias Ágeis -->
+      <div class="card free">
+        <div class="card-check">
+          <button class="check-btn" onclick="toggleDone(this)" title="Marcar como concluído">✓</button>
+        </div>
+        <div class="card-top">
+          <div class="card-icon">🏃</div>
+          <div class="badges">
+            <span class="badge badge-free">Gratuito</span>
+            <span class="badge badge-hot">🔥 Usado em todo lugar</span>
+          </div>
+        </div>
+        <div class="card-name">Scrum & Metodologias Ágeis na prática</div>
+        <div class="card-org">Scrum.org / YouTube</div>
+        <div class="card-desc">Praticamente todas as empresas de tecnologia trabalham com Scrum ou Kanban. Entender sprints, daily, retrospectiva, backlog e cerimônias ágeis é esperado de qualquer dev júnior.</div>
+        <div class="card-footer">
+          <div class="card-price">💰 <strong>100% gratuito</strong></div>
+          <div class="card-links">
+            <a href="https://www.scrum.org/open-assessments/scrum-open" target="_blank" class="btn-link primary">→ Simulado Scrum.org</a>
+            <a href="https://www.youtube.com/results?search_query=scrum+ágil+para+desenvolvedores" target="_blank" class="btn-link">Ver no YouTube</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resolução de problemas -->
+      <div class="card free">
+        <div class="card-check">
+          <button class="check-btn" onclick="toggleDone(this)" title="Marcar como concluído">✓</button>
+        </div>
+        <div class="card-top">
+          <div class="card-icon">🧩</div>
+          <div class="badges">
+            <span class="badge badge-free">Gratuito</span>
+            <span class="badge badge-hot">🔥 Entrevistas técnicas</span>
+          </div>
+        </div>
+        <div class="card-name">Lógica & Resolução de Problemas — LeetCode / HackerRank</div>
+        <div class="card-org">LeetCode / HackerRank</div>
+        <div class="card-desc">Muitas empresas aplicam testes de lógica e algoritmos no processo seletivo. Praticar resoluções de problemas em Java melhora seu raciocínio e te prepara para entrevistas técnicas com código ao vivo.</div>
+        <div class="card-footer">
+          <div class="card-price">💰 <strong>100% gratuito</strong> (plano básico)</div>
+          <div class="card-links">
+            <a href="https://leetcode.com/problemset/" target="_blank" class="btn-link primary">→ LeetCode</a>
+            <a href="https://www.hackerrank.com/domains/java" target="_blank" class="btn-link">HackerRank Java</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- LinkedIn e marca pessoal -->
+      <div class="card free">
+        <div class="card-check">
+          <button class="check-btn" onclick="toggleDone(this)" title="Marcar como concluído">✓</button>
+        </div>
+        <div class="card-top">
+          <div class="card-icon">🚀</div>
+          <div class="badges">
+            <span class="badge badge-free">Gratuito</span>
+          </div>
+        </div>
+        <div class="card-name">Marca pessoal para devs — LinkedIn & GitHub</div>
+        <div class="card-org">YouTube / LinkedIn Learning</div>
+        <div class="card-desc">Postar sobre o que você está aprendendo no LinkedIn, escrever READMEs caprichados no GitHub e compartilhar seus projetos cria visibilidade com recrutadores de forma orgânica e contínua.</div>
+        <div class="card-footer">
+          <div class="card-price">💰 <strong>100% gratuito</strong></div>
+          <div class="card-links">
+            <a href="https://www.youtube.com/results?search_query=marca+pessoal+desenvolvedor+linkedin" target="_blank" class="btn-link primary">→ Ver no YouTube</a>
+            <a href="https://www.linkedin.com/learning/" target="_blank" class="btn-link">LinkedIn Learning</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gestão de tempo -->
+      <div class="card free">
+        <div class="card-check">
+          <button class="check-btn" onclick="toggleDone(this)" title="Marcar como concluído">✓</button>
+        </div>
+        <div class="card-top">
+          <div class="card-icon">⏱️</div>
+          <div class="badges">
+            <span class="badge badge-free">Gratuito</span>
+          </div>
+        </div>
+        <div class="card-name">Gestão de tempo e produtividade para devs</div>
+        <div class="card-org">YouTube / Notion</div>
+        <div class="card-desc">Estudar, trabalhar e ainda se atualizar constantemente exige organização. Técnicas como Pomodoro, time blocking e uso de ferramentas como Notion ou Obsidian ajudam a manter o ritmo sem burnout.</div>
+        <div class="card-footer">
+          <div class="card-price">💰 <strong>100% gratuito</strong></div>
+          <div class="card-links">
+            <a href="https://www.notion.so/templates" target="_blank" class="btn-link primary">→ Templates Notion</a>
+            <a href="https://www.youtube.com/results?search_query=produtividade+desenvolvedor+estudos" target="_blank" class="btn-link">Ver no YouTube</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tip-box">
+      <span class="tip-icon">🧠</span>
+      <span><strong>Por que soft skills importam para devs:</strong> Tecnologia muda rápido — o que diferencia devs seniores de júniors ao longo do tempo não é só o código, é saber trabalhar em equipe, comunicar problemas, pedir ajuda na hora certa e se adaptar. Empresas contratam pessoas, não só skills técnicas.</span>
+    </div>
+  </div>
+
+  <!-- FASE AWS -->
+  <div class="phase-block" id="phase2">
+    <div class="phase-header">
+      <div class="phase-num">04</div>
       <div class="phase-meta">
         <div class="phase-timeline">// 3 a 6 meses — Alta prioridade</div>
         <div class="phase-name">Cloud com AWS</div>
@@ -747,7 +1075,7 @@ footer span { color: var(--accent2); }
   <!-- FASE 3 -->
   <div class="phase-block" id="phase3">
     <div class="phase-header">
-      <div class="phase-num">03</div>
+      <div class="phase-num">05</div>
       <div class="phase-meta">
         <div class="phase-timeline">// 6 a 12 meses — Após ter experiência</div>
         <div class="phase-name">Spring Framework oficial + Segurança</div>
@@ -832,7 +1160,7 @@ footer span { color: var(--accent2); }
   <!-- FASE 4 -->
   <div class="phase-block" id="phase4">
     <div class="phase-header">
-      <div class="phase-num">04</div>
+      <div class="phase-num">06</div>
       <div class="phase-meta">
         <div class="phase-timeline">// 12 a 18 meses — Crescer além do backend puro</div>
         <div class="phase-name">DevOps, Containers & CI/CD</div>
@@ -922,14 +1250,323 @@ footer span { color: var(--accent2); }
 
 </div>
 
+<!-- FASE BOAS PRÁTICAS -->
+<div class="phases">
+  <div class="phase-block" id="phase-praticas">
+    <div class="phase-header">
+      <div class="phase-num">07</div>
+      <div class="phase-meta">
+        <div class="phase-timeline">// Contínuo — Estudar desde o início</div>
+        <div class="phase-name">Boas Práticas & Arquitetura de Software</div>
+        <div class="phase-desc">O que separa um dev que escreve código funcional de um dev que escreve código de qualidade. Essencial para se destacar em code reviews e entrevistas técnicas.</div>
+      </div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card paid">
+        <div class="card-check"><button class="check-btn" onclick="toggleDone(this)" title="Marcar como concluído">✓</button></div>
+        <div class="card-top">
+          <div class="card-icon">📖</div>
+          <div class="badges"><span class="badge badge-paid">Livro</span><span class="badge badge-hot">🔥 Leitura obrigatória</span></div>
+        </div>
+        <div class="card-name">Clean Code — Robert C. Martin (Uncle Bob)</div>
+        <div class="card-org">Livro / Amazon</div>
+        <div class="card-desc">O livro mais citado em entrevistas técnicas. Ensina como escrever código limpo, legível e fácil de manter. Todo dev sério precisa ter lido. Mencioná-lo em entrevistas já impressiona recrutadores.</div>
+        <div class="card-footer">
+          <div class="card-price">💰 <strong>R$ 60–90</strong> (impresso ou e-book)</div>
+          <div class="card-links">
+            <a href="https://www.amazon.com.br/C%C3%B3digo-limpo-Robert-C-Martin/dp/8576082675" target="_blank" class="btn-link primary">→ Ver na Amazon</a>
+            <a href="https://www.youtube.com/results?search_query=clean+code+resumo+em+portugues" target="_blank" class="btn-link">Resumo YouTube</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card free">
+        <div class="card-check"><button class="check-btn" onclick="toggleDone(this)" title="Marcar como concluído">✓</button></div>
+        <div class="card-top">
+          <div class="card-icon">🏛️</div>
+          <div class="badges"><span class="badge badge-free">Gratuito</span><span class="badge badge-hot">🔥 Perguntado em toda entrevista</span></div>
+        </div>
+        <div class="card-name">Princípios SOLID na prática com Java</div>
+        <div class="card-org">YouTube / Baeldung</div>
+        <div class="card-desc">SOLID é perguntado em praticamente todas as entrevistas técnicas para backend. Entender e saber exemplificar cada princípio (SRP, OCP, LSP, ISP, DIP) com exemplos em Java é essencial.</div>
+        <div class="card-footer">
+          <div class="card-price">💰 <strong>100% gratuito</strong></div>
+          <div class="card-links">
+            <a href="https://www.youtube.com/results?search_query=solid+principios+java+exemplos" target="_blank" class="btn-link primary">→ Ver no YouTube</a>
+            <a href="https://www.baeldung.com/solid-principles" target="_blank" class="btn-link">Artigo Baeldung</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card free">
+        <div class="card-check"><button class="check-btn" onclick="toggleDone(this)" title="Marcar como concluído">✓</button></div>
+        <div class="card-top">
+          <div class="card-icon">🧩</div>
+          <div class="badges"><span class="badge badge-free">Gratuito</span></div>
+        </div>
+        <div class="card-name">Design Patterns — Padrões de Projeto em Java</div>
+        <div class="card-org">Refactoring.Guru / YouTube</div>
+        <div class="card-desc">Singleton, Factory, Strategy, Observer, Builder... Padrões de projeto são perguntados em entrevistas e muito usados no dia a dia com Spring. O site Refactoring.Guru tem exemplos visuais excelentes e gratuitos.</div>
+        <div class="card-footer">
+          <div class="card-price">💰 <strong>100% gratuito</strong></div>
+          <div class="card-links">
+            <a href="https://refactoring.guru/pt-br/design-patterns/java" target="_blank" class="btn-link primary">→ Refactoring.Guru</a>
+            <a href="https://www.youtube.com/results?search_query=design+patterns+java+portugues" target="_blank" class="btn-link">Ver no YouTube</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card free">
+        <div class="card-check"><button class="check-btn" onclick="toggleDone(this)" title="Marcar como concluído">✓</button></div>
+        <div class="card-top">
+          <div class="card-icon">🌿</div>
+          <div class="badges"><span class="badge badge-free">Gratuito</span></div>
+        </div>
+        <div class="card-name">Git Avançado — Git Flow & Conventional Commits</div>
+        <div class="card-org">Atlassian / conventionalcommits.org</div>
+        <div class="card-desc">Git Flow, rebase, merge, resolução de conflitos e boas práticas de commits são habilidades que todo time profissional exige. Conventional Commits padroniza mensagens e é muito valorizado em code reviews.</div>
+        <div class="card-footer">
+          <div class="card-price">💰 <strong>100% gratuito</strong></div>
+          <div class="card-links">
+            <a href="https://www.atlassian.com/br/git/tutorials/comparing-workflows/gitflow-workflow" target="_blank" class="btn-link primary">→ Git Flow guide</a>
+            <a href="https://www.conventionalcommits.org/pt-br/" target="_blank" class="btn-link">Conventional Commits</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card free">
+        <div class="card-check"><button class="check-btn" onclick="toggleDone(this)" title="Marcar como concluído">✓</button></div>
+        <div class="card-top">
+          <div class="card-icon">📡</div>
+          <div class="badges"><span class="badge badge-free">Gratuito</span></div>
+        </div>
+        <div class="card-name">Baeldung — Referência técnica Java & Spring</div>
+        <div class="card-org">baeldung.com</div>
+        <div class="card-desc">O melhor site de referência técnica para Java e Spring em inglês. Artigos detalhados sobre qualquer tema: JPA, Security, Testing, REST, concorrência e muito mais. Adicione nos favoritos agora.</div>
+        <div class="card-footer">
+          <div class="card-price">💰 <strong>100% gratuito</strong></div>
+          <div class="card-links">
+            <a href="https://www.baeldung.com" target="_blank" class="btn-link primary">→ Acessar Baeldung</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="tip-box">
+      <span class="tip-icon">💡</span>
+      <span><strong>Dica:</strong> Em entrevistas técnicas, explicar SOLID e Design Patterns com exemplos em Java vale tanto quanto saber a sintaxe. Comece pelo Refactoring.Guru — os exemplos visuais são excelentes para fixar o conteúdo rapidamente.</span>
+    </div>
+  </div>
+
+  <!-- FASE SOFT SKILLS -->
+  <div class="phase-block" id="phase-soft">
+    <div class="phase-header">
+      <div class="phase-num">08</div>
+      <div class="phase-meta">
+        <div class="phase-timeline">// Contínuo — Desenvolver sempre</div>
+        <div class="phase-name">Soft Skills & Carreira em Tech</div>
+        <div class="phase-desc">Habilidades comportamentais são decisivas para contratação e crescimento. Recrutadores afirmam que a maioria das demissões em tech envolve soft skills, não habilidades técnicas.</div>
+      </div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card free">
+        <div class="card-check"><button class="check-btn" onclick="toggleDone(this)" title="Marcar como concluído">✓</button></div>
+        <div class="card-top">
+          <div class="card-icon">🗣️</div>
+          <div class="badges"><span class="badge badge-free">Gratuito</span><span class="badge badge-hot">🔥 Decisivo em entrevistas</span></div>
+        </div>
+        <div class="card-name">Comunicação técnica — explicar o que você faz</div>
+        <div class="card-org">YouTube / Prática diária</div>
+        <div class="card-desc">Saber explicar seu raciocínio técnico de forma clara é essencial em entrevistas e no trabalho em equipe. Pratique explicar seus projetos em voz alta — como você descreveria para alguém não técnico?</div>
+        <div class="card-footer">
+          <div class="card-price">💰 <strong>100% gratuito</strong></div>
+          <div class="card-links">
+            <a href="https://www.youtube.com/results?search_query=comunicacao+tecnica+desenvolvedor" target="_blank" class="btn-link primary">→ Ver no YouTube</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card free">
+        <div class="card-check"><button class="check-btn" onclick="toggleDone(this)" title="Marcar como concluído">✓</button></div>
+        <div class="card-top">
+          <div class="card-icon">🏃</div>
+          <div class="badges"><span class="badge badge-free">Gratuito</span><span class="badge badge-hot">🔥 Todo time usa</span></div>
+        </div>
+        <div class="card-name">Scrum & Metodologias Ágeis — fundamentos</div>
+        <div class="card-org">Scrum.org / YouTube</div>
+        <div class="card-desc">Praticamente todo time de desenvolvimento trabalha com Scrum ou Kanban. Entender sprints, daily, retrospectiva, backlog e planning é exigido desde o primeiro dia como júnior.</div>
+        <div class="card-footer">
+          <div class="card-price">💰 <strong>100% gratuito</strong></div>
+          <div class="card-links">
+            <a href="https://www.scrum.org/resources/what-is-scrum" target="_blank" class="btn-link primary">→ Scrum.org (oficial)</a>
+            <a href="https://www.youtube.com/results?search_query=scrum+para+iniciantes+portugues" target="_blank" class="btn-link">Ver no YouTube</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card cert">
+        <div class="card-check"><button class="check-btn" onclick="toggleDone(this)" title="Marcar como concluído">✓</button></div>
+        <div class="card-top">
+          <div class="card-icon">📋</div>
+          <div class="badges"><span class="badge badge-cert">Certificação</span></div>
+        </div>
+        <div class="card-name">PSM I — Professional Scrum Master (nível 1)</div>
+        <div class="card-org">Scrum.org</div>
+        <div class="card-desc">Certificação de Scrum reconhecida mundialmente. O estudo pode ser feito gratuitamente no site oficial e a prova custa apenas US$ 150. Ótimo diferencial para vagas em times ágeis.</div>
+        <div class="card-footer">
+          <div class="card-price">💰 Exame: <strong>US$ 150</strong> · Estudo: gratuito</div>
+          <div class="card-links">
+            <a href="https://www.scrum.org/assessments/professional-scrum-master-i-certification" target="_blank" class="btn-link primary">→ Ver certificação</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card free">
+        <div class="card-check"><button class="check-btn" onclick="toggleDone(this)" title="Marcar como concluído">✓</button></div>
+        <div class="card-top">
+          <div class="card-icon">🌐</div>
+          <div class="badges"><span class="badge badge-free">Gratuito</span><span class="badge badge-hot">🔥 Você já tem vantagem!</span></div>
+        </div>
+        <div class="card-name">Inglês técnico para devs — manter e evoluir</div>
+        <div class="card-org">YouTube / Podcasts tech</div>
+        <div class="card-desc">Você já tem inglês avançado — isso é um diferencial enorme! Mantenha o hábito: consuma documentações em inglês, assista canais tech (Amigoscode, Fireship, TechWorld with Nana) e pratique no dia a dia.</div>
+        <div class="card-footer">
+          <div class="card-price">💰 <strong>100% gratuito</strong></div>
+          <div class="card-links">
+            <a href="https://www.youtube.com/@Fireship" target="_blank" class="btn-link primary">→ Canal Fireship</a>
+            <a href="https://www.youtube.com/@TechWorldwithNana" target="_blank" class="btn-link">TechWorld w/ Nana</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card free">
+        <div class="card-check"><button class="check-btn" onclick="toggleDone(this)" title="Marcar como concluído">✓</button></div>
+        <div class="card-top">
+          <div class="card-icon">🧠</div>
+          <div class="badges"><span class="badge badge-free">Gratuito</span></div>
+        </div>
+        <div class="card-name">Lógica e algoritmos — LeetCode & HackerRank</div>
+        <div class="card-org">LeetCode / HackerRank</div>
+        <div class="card-desc">Muitas empresas aplicam desafios de lógica no processo seletivo. Praticar problemas de nível fácil e médio no LeetCode em Java habitua você ao raciocínio exigido em entrevistas técnicas.</div>
+        <div class="card-footer">
+          <div class="card-price">💰 <strong>Gratuito</strong> no plano básico</div>
+          <div class="card-links">
+            <a href="https://leetcode.com" target="_blank" class="btn-link primary">→ LeetCode</a>
+            <a href="https://www.hackerrank.com/domains/java" target="_blank" class="btn-link">HackerRank Java</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card free">
+        <div class="card-check"><button class="check-btn" onclick="toggleDone(this)" title="Marcar como concluído">✓</button></div>
+        <div class="card-top">
+          <div class="card-icon">💼</div>
+          <div class="badges"><span class="badge badge-free">Gratuito</span></div>
+        </div>
+        <div class="card-name">Marca pessoal tech — LinkedIn & GitHub</div>
+        <div class="card-org">LinkedIn / GitHub</div>
+        <div class="card-desc">Postar sobre o que você aprende no LinkedIn, escrever READMEs caprichados nos projetos do GitHub e interagir com a comunidade tech aumenta muito sua visibilidade para recrutadores e oportunidades.</div>
+        <div class="card-footer">
+          <div class="card-price">💰 <strong>100% gratuito</strong></div>
+          <div class="card-links">
+            <a href="https://www.linkedin.com/in/gabriel-alberto-de-oliveira-b406402b8/" target="_blank" class="btn-link primary">→ Seu LinkedIn</a>
+            <a href="https://github.com/GabrielOliveira342" target="_blank" class="btn-link">Seu GitHub</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="tip-box">
+      <span class="tip-icon">🌟</span>
+      <span><strong>Técnica STAR em entrevistas:</strong> Para responder perguntas comportamentais ("me conte sobre um desafio que superou"), use Situação → Tarefa → Ação → Resultado. Recrutadores adoram respostas estruturadas — e pouquíssimos júniors sabem fazer isso.</span>
+    </div>
+  </div>
+
+  <!-- FASE BANCO DE DADOS -->
+  <div class="phase-block" id="phase-db">
+    <div class="phase-header">
+      <div class="phase-num">09</div>
+      <div class="phase-meta">
+        <div class="phase-timeline">// 1 a 6 meses — Em paralelo com o backend</div>
+        <div class="phase-name">Banco de Dados Avançado & NoSQL</div>
+        <div class="phase-desc">SQL avançado, otimização e bancos NoSQL são diferenciais poderosos. Todo projeto backend sério depende de banco de dados bem projetado e queries eficientes.</div>
+      </div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card free">
+        <div class="card-check"><button class="check-btn" onclick="toggleDone(this)" title="Marcar como concluído">✓</button></div>
+        <div class="card-top">
+          <div class="card-icon">🗄️</div>
+          <div class="badges"><span class="badge badge-free">Gratuito</span><span class="badge badge-hot">🔥 Cobrado em toda entrevista</span></div>
+        </div>
+        <div class="card-name">SQL Avançado — Joins, Índices e Otimização</div>
+        <div class="card-org">SQLZoo / YouTube</div>
+        <div class="card-desc">Ir além do SELECT básico: JOINs complexos, subqueries, índices, EXPLAIN ANALYZE, procedures e otimização de queries. Muito cobrado em entrevistas técnicas de backend em todos os níveis.</div>
+        <div class="card-footer">
+          <div class="card-price">💰 <strong>100% gratuito</strong></div>
+          <div class="card-links">
+            <a href="https://sqlzoo.net" target="_blank" class="btn-link primary">→ SQLZoo (interativo)</a>
+            <a href="https://www.youtube.com/results?search_query=sql+avancado+postgresql+portugues" target="_blank" class="btn-link">Ver no YouTube</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card free">
+        <div class="card-check"><button class="check-btn" onclick="toggleDone(this)" title="Marcar como concluído">✓</button></div>
+        <div class="card-top">
+          <div class="card-icon">⚡</div>
+          <div class="badges"><span class="badge badge-free">Gratuito</span></div>
+        </div>
+        <div class="card-name">Redis — Cache e performance em APIs Spring Boot</div>
+        <div class="card-org">Redis.io / YouTube</div>
+        <div class="card-desc">Redis é amplamente usado para cache em aplicações Spring Boot. A integração é direta via Spring Data Redis. Adicionar cache no seu projeto do portfólio é um diferencial visível e fácil de implementar.</div>
+        <div class="card-footer">
+          <div class="card-price">💰 <strong>100% gratuito</strong></div>
+          <div class="card-links">
+            <a href="https://redis.io/docs/latest/" target="_blank" class="btn-link primary">→ Docs oficiais</a>
+            <a href="https://www.youtube.com/results?search_query=redis+spring+boot+cache+java" target="_blank" class="btn-link">Ver no YouTube</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card free">
+        <div class="card-check"><button class="check-btn" onclick="toggleDone(this)" title="Marcar como concluído">✓</button></div>
+        <div class="card-top">
+          <div class="card-icon">🍃</div>
+          <div class="badges"><span class="badge badge-free">Gratuito</span></div>
+        </div>
+        <div class="card-name">MongoDB — Banco NoSQL com Spring Boot</div>
+        <div class="card-org">MongoDB University (gratuito)</div>
+        <div class="card-desc">MongoDB é o banco NoSQL mais usado com Java. A MongoDB University oferece cursos gratuitos de alta qualidade. Spring Data MongoDB facilita a integração. Ótimo diferencial no currículo junto ao PostgreSQL.</div>
+        <div class="card-footer">
+          <div class="card-price">💰 <strong>Cursos gratuitos</strong> · Cert: ~US$ 150</div>
+          <div class="card-links">
+            <a href="https://learn.mongodb.com" target="_blank" class="btn-link primary">→ MongoDB University</a>
+            <a href="https://www.youtube.com/results?search_query=mongodb+spring+boot+java" target="_blank" class="btn-link">Ver no YouTube</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="tip-box">
+      <span class="tip-icon">💡</span>
+      <span><strong>Dica prática:</strong> Adicione Redis no seu projeto de Web Services — coloque cache em um endpoint de consulta. É uma linha de configuração no Spring Boot e fica ótimo no portfólio, mostrando que você pensa em performance desde cedo.</span>
+    </div>
+  </div>
+
+</div>
+
 <!-- FOOTER -->
 <footer>
-  <p>© 2025 <span>Gabriel Alberto de Oliveira</span> · Plano de Estudos pessoal · Atualizado em 2025</p>
+  <p>© 2026 <span>Gabriel Alberto de Oliveira</span> · Plano de Estudos pessoal · Atualizado em 2026</p>
 </footer>
 
 <script>
   // ── PROGRESS TRACKER ──
-  const STORAGE_KEY = 'gabriel_study_plan_v1';
+  const STORAGE_KEY = 'gabriel_study_plan_v3';
   const total = document.querySelectorAll('.check-btn').length;
 
   function saveState() {
