@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gabriel Alberto — Backend Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Cabinet+Grotesk:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --c1: #ff6b35;
+  --c2: #f7931e;
+  --c3: #00d4ff;
+  --c4: #7c3aed;
+  --c5: #06ffa5;
+  --bg: #080b14;
+  --bg2: #0d1120;
+  --bg3: #111827;
+  --text: #f0f4ff;
+  --muted: #6b7591;
+  --border: rgba(255,255,255,0.07);
+  --grad: linear-gradient(135deg, var(--c1), var(--c2), var(--c4), var(--c3));
+  --grad2: linear-gradient(135deg, var(--c3), var(--c4));
+  --grad3: linear-gradient(135deg, var(--c1), var(--c2));
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Cabinet Grotesk', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── NOISE GRAIN ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.35;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--c4); border-radius: 2px; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 5%;
+  background: rgba(8,11,20,0.8);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
+  animation: fadeDown .7s ease both;
+}
+
+.nav-logo {
+  font-family: 'Clash Display', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -.02em;
+}
+
+.nav-links {
+  display: flex; align-items: center; gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: .9rem;
+  font-weight: 500;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--text); }
+
+/* ── LANG TOGGLE ── */
+.lang-toggle {
+  display: flex;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+  font-size: .8rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: .05em;
+}
+.lang-btn {
+  padding: .35rem .85rem;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  transition: all .2s;
+}
+.lang-btn.active {
+  background: var(--grad2);
+  color: #fff;
+  border-radius: 99px;
+}
+
+/* ── SECTIONS ── */
+section { padding: 6rem 5%; }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 8rem;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 50%, rgba(124,58,237,.18) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 20% 70%, rgba(0,212,255,.1) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 80% 20%, rgba(255,107,53,.12) 0%, transparent 60%);
+}
+
+/* floating orbs */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  animation: float 8s ease-in-out infinite;
+  pointer-events: none;
+}
+.orb1 { width: 400px; height: 400px; background: rgba(124,58,237,.15); top: 5%; right: 5%; animation-delay: 0s; }
+.orb2 { width: 300px; height: 300px; background: rgba(0,212,255,.1); bottom: 10%; left: 15%; animation-delay: -3s; }
+.orb3 { width: 200px; height: 200px; background: rgba(255,107,53,.12); top: 30%; left: 5%; animation-delay: -5s; }
+
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 900px;
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(0,212,255,.08);
+  border: 1px solid rgba(0,212,255,.2);
+  border-radius: 99px;
+  padding: .4rem 1rem;
+  font-size: .8rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--c3);
+  margin-bottom: 1.5rem;
+  animation: fadeUp .8s .2s ease both;
+}
+.hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--c5); animation: pulse 2s infinite; }
+
+h1.hero-title {
+  font-family: 'Clash Display', sans-serif;
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 700;
+  line-height: .95;
+  letter-spacing: -.04em;
+  margin-bottom: 1.5rem;
+  animation: fadeUp .8s .35s ease both;
+}
+
+.title-grad {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--muted);
+  max-width: 600px;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  animation: fadeUp .8s .5s ease both;
+}
+
+.hero-cta {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  animation: fadeUp .8s .65s ease both;
+}
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: .6rem;
+  padding: .9rem 2rem;
+  background: var(--grad);
+  color: #fff;
+  font-weight: 700;
+  font-size: .95rem;
+  border-radius: 12px;
+  text-decoration: none;
+  border: none; cursor: pointer;
+  position: relative; overflow: hidden;
+  transition: transform .2s, box-shadow .2s;
+  letter-spacing: .01em;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(255,255,255,0);
+  transition: background .2s;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(124,58,237,.35); }
+.btn-primary:hover::before { background: rgba(255,255,255,.08); }
+
+.btn-outline {
+  display: inline-flex; align-items: center; gap: .6rem;
+  padding: .9rem 2rem;
+  background: transparent;
+  color: var(--text);
+  font-weight: 700;
+  font-size: .95rem;
+  border-radius: 12px;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color .2s, background .2s, transform .2s;
+}
+.btn-outline:hover { border-color: var(--c3); background: rgba(0,212,255,.05); transform: translateY(-2px); }
+
+.hero-stats {
+  display: flex; gap: 3rem; flex-wrap: wrap;
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--border);
+  animation: fadeUp .8s .8s ease both;
+}
+
+.stat-item {}
+.stat-num {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  background: var(--grad3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+.stat-label { font-size: .8rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-top: .3rem; }
+
+/* ── ABOUT ── */
+#about { background: var(--bg2); }
+
+.section-tag {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .75rem;
+  color: var(--c3);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  margin-bottom: 1rem;
+}
+.section-tag::before { content: '//'; color: var(--c1); font-weight: 700; }
+
+.section-title {
+  font-family: 'Clash Display', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -.03em;
+  line-height: 1.1;
+  margin-bottom: 2.5rem;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about-text p {
+  color: rgba(240,244,255,.75);
+  line-height: 1.8;
+  font-size: 1.05rem;
+  margin-bottom: 1.2rem;
+}
+
+.about-tags {
+  display: flex; flex-wrap: wrap; gap: .6rem;
+  margin-top: 1.5rem;
+}
+.tag {
+  padding: .35rem .85rem;
+  border-radius: 99px;
+  font-size: .8rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  border: 1px solid;
+  letter-spacing: .03em;
+}
+.tag-orange { border-color: rgba(255,107,53,.3); color: var(--c1); background: rgba(255,107,53,.06); }
+.tag-cyan   { border-color: rgba(0,212,255,.3);  color: var(--c3); background: rgba(0,212,255,.06); }
+.tag-purple { border-color: rgba(124,58,237,.3); color: #a78bfa;   background: rgba(124,58,237,.06); }
+.tag-green  { border-color: rgba(6,255,165,.3);  color: var(--c5); background: rgba(6,255,165,.06); }
+
+.about-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.about-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--grad);
+}
+
+.edu-item { margin-bottom: 1.5rem; }
+.edu-school {
+  font-family: 'Clash Display', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: .2rem;
+}
+.edu-degree { font-size: .9rem; color: var(--muted); margin-bottom: .1rem; }
+.edu-year {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .75rem;
+  color: var(--c3);
+}
+
+.divider { height: 1px; background: var(--border); margin: 1.5rem 0; }
+
+.lang-item {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: .8rem;
+}
+.lang-name { font-weight: 600; }
+.lang-level {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .78rem;
+  color: var(--c5);
+  background: rgba(6,255,165,.08);
+  border: 1px solid rgba(6,255,165,.2);
+  border-radius: 99px;
+  padding: .2rem .7rem;
+}
+
+/* ── SKILLS ── */
+#skills {}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.skill-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.8rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform .25s, border-color .25s, box-shadow .25s;
+}
+.skill-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,.15); box-shadow: 0 20px 50px rgba(0,0,0,.4); }
+
+.skill-card-icon {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.skill-card-title {
+  font-family: 'Clash Display', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: -.01em;
+  margin-bottom: .2rem;
+}
+.skill-card-sub {
+  font-size: .8rem;
+  color: var(--muted);
+  margin-bottom: 1.2rem;
+}
+
+.skill-pills { display: flex; flex-wrap: wrap; gap: .4rem; }
+.skill-pill {
+  padding: .28rem .7rem;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .72rem;
+  font-weight: 500;
+}
+.pill-main { background: rgba(124,58,237,.15); color: #c4b5fd; border: 1px solid rgba(124,58,237,.25); }
+.pill-sec  { background: rgba(0,212,255,.1);   color: #7dd3fc; border: 1px solid rgba(0,212,255,.2); }
+.pill-db   { background: rgba(255,107,53,.1);  color: #fca5a5; border: 1px solid rgba(255,107,53,.2); }
+.pill-tool { background: rgba(6,255,165,.08);  color: #6ee7b7; border: 1px solid rgba(6,255,165,.2); }
+.pill-front{ background: rgba(247,147,30,.1);  color: #fcd34d; border: 1px solid rgba(247,147,30,.25); }
+
+.skill-card-bar {
+  position: absolute; bottom: 0; left: 0; height: 3px;
+}
+
+/* ── PROJECTS ── */
+#projects { background: var(--bg2); }
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.project-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform .3s, box-shadow .3s, border-color .3s;
+  display: flex; flex-direction: column;
+}
+.project-card:hover { transform: translateY(-6px); box-shadow: 0 30px 60px rgba(0,0,0,.5); border-color: rgba(255,255,255,.12); }
+
+.project-header {
+  padding: 2rem 2rem 0;
+  position: relative;
+}
+
+.project-accent {
+  position: absolute; top: 0; left: 0; right: 0; height: 4px;
+}
+
+.project-icon-row {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.project-icon {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  border: 1px solid var(--border);
+}
+
+.project-meta {}
+.project-name {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  margin-bottom: .15rem;
+}
+.project-type {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .72rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.project-desc {
+  padding: 0 2rem 1.5rem;
+  color: rgba(240,244,255,.7);
+  font-size: .95rem;
+  line-height: 1.7;
+  flex: 1;
+}
+
+.project-features {
+  padding: 0 2rem 1.5rem;
+  list-style: none;
+}
+.project-features li {
+  font-size: .85rem;
+  color: rgba(240,244,255,.6);
+  padding: .3rem 0;
+  padding-left: 1.2rem;
+  position: relative;
+}
+.project-features li::before {
+  content: '→';
+  position: absolute; left: 0;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--c3);
+  font-size: .75rem;
+}
+
+.project-tech {
+  padding: 0 2rem 1.5rem;
+  display: flex; flex-wrap: wrap; gap: .4rem;
+}
+
+.project-footer {
+  padding: 1.2rem 2rem;
+  border-top: 1px solid var(--border);
+  display: flex; gap: 1rem;
+}
+.project-link {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-size: .82rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--muted);
+  transition: color .2s;
+  letter-spacing: .02em;
+}
+.project-link:hover { color: var(--c3); }
+.project-link svg { width: 14px; height: 14px; }
+
+/* ── CONTACT ── */
+#contact {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.contact-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(124,58,237,.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.contact-content { position: relative; z-index: 2; max-width: 650px; margin: 0 auto; }
+
+.contact-title {
+  font-family: 'Clash Display', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -.04em;
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+}
+
+.contact-sub {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+
+.contact-links {
+  display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;
+}
+
+.contact-card {
+  display: inline-flex; align-items: center; gap: .7rem;
+  padding: .9rem 1.6rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+  font-size: .9rem;
+  background: var(--bg2);
+  transition: transform .2s, border-color .2s, background .2s;
+}
+.contact-card:hover { transform: translateY(-3px); border-color: rgba(0,212,255,.3); background: rgba(0,212,255,.04); }
+.contact-card svg { flex-shrink: 0; }
+
+/* ── FOOTER ── */
+footer {
+  padding: 2rem 5%;
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  background: var(--bg);
+}
+.footer-text {
+  font-size: .8rem;
+  color: var(--muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+.footer-made {
+  font-size: .8rem;
+  color: var(--muted);
+}
+.footer-made span {
+  background: var(--grad3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeUp   { from { opacity: 0; transform: translateY(30px);  } to { opacity: 1; transform: translateY(0); } }
+@keyframes float    { 0%,100%{ transform: translateY(0) scale(1); } 50%{ transform: translateY(-20px) scale(1.03); } }
+@keyframes pulse    { 0%,100%{ opacity: 1; } 50%{ opacity: .3; } }
+@keyframes spin     { to { transform: rotate(360deg); } }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: .9rem 5%; }
+  .nav-links { display: none; }
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .hero-stats { gap: 2rem; }
+  .projects-grid { grid-template-columns: 1fr; }
+  section { padding: 4rem 5%; }
+}
+
+/* ── LANG HIDDEN ── */
+[data-lang="pt"] { display: none; }
+body.lang-pt [data-lang="pt"] { display: revert; }
+body.lang-pt [data-lang="en"] { display: none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Gabriel Alberto</div>
+  <ul class="nav-links">
+    <li><a href="#about"   data-lang="en">About</a>    <a href="#about"   data-lang="pt">Sobre</a></li>
+    <li><a href="#skills"  data-lang="en">Skills</a>   <a href="#skills"  data-lang="pt">Skills</a></li>
+    <li><a href="#projects"data-lang="en">Projects</a> <a href="#projects"data-lang="pt">Projetos</a></li>
+    <li><a href="#contact" data-lang="en">Contact</a>  <a href="#contact" data-lang="pt">Contato</a></li>
+  </ul>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn"        onclick="setLang('pt')">PT</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span data-lang="en">Available for Junior / Internship roles</span>
+      <span data-lang="pt">Disponível para estágio / vaga júnior</span>
+    </div>
+    <h1 class="hero-title">
+      <span data-lang="en">Building<br><span class="title-grad">robust</span><br>backends.</span>
+      <span data-lang="pt">Criando<br><span class="title-grad">backends</span><br>robustos.</span>
+    </h1>
+    <p class="hero-sub">
+      <span data-lang="en">Java & Spring Boot developer focused on scalable REST APIs, cloud integrations and clean architecture. Based in Tatuí, SP — ready to ship.</span>
+      <span data-lang="pt">Desenvolvedor Java & Spring Boot focado em APIs REST escaláveis, integrações em nuvem e arquitetura limpa. Tatuí, SP — pronto para entregar.</span>
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        <span data-lang="en">See My Work</span>
+        <span data-lang="pt">Ver Projetos</span>
+      </a>
+      <a href="https://github.com/GabrielOliveira342" target="_blank" class="btn-outline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">2+</div>
+        <div class="stat-label" data-lang="en">Real Projects</div>
+        <div class="stat-label" data-lang="pt">Projetos Reais</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">Java</div>
+        <div class="stat-label" data-lang="en">Main Stack</div>
+        <div class="stat-label" data-lang="pt">Stack Principal</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">AWS</div>
+        <div class="stat-label" data-lang="en">Cloud Experience</div>
+        <div class="stat-label" data-lang="pt">Experiência Cloud</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">C2</div>
+        <div class="stat-label" data-lang="en">English Level</div>
+        <div class="stat-label" data-lang="pt">Nível de Inglês</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-tag" data-lang="en">About me</div>
+  <div class="section-tag" data-lang="pt">Sobre mim</div>
+  <h2 class="section-title reveal">
+    <span data-lang="en">Who's behind<br>the code?</span>
+    <span data-lang="pt">Quem está por<br>trás do código?</span>
+  </h2>
+  <div class="about-grid reveal">
+    <div class="about-text">
+      <p data-lang="en">
+        I'm Gabriel, a backend developer in my final semester of Systems Analysis and Development at FACENS (Sorocaba, SP). My focus is building clean, scalable APIs using <strong>Java and Spring Boot</strong>, with real experience in cloud deployment on AWS EC2 and S3.
+      </p>
+      <p data-lang="pt">
+        Sou o Gabriel, desenvolvedor backend no último semestre de Análise e Desenvolvimento de Sistemas na FACENS (Sorocaba, SP). Meu foco é construir APIs limpas e escaláveis com <strong>Java e Spring Boot</strong>, com experiência real em deploy na AWS EC2 e S3.
+      </p>
+      <p data-lang="en">
+        I love solving real problems through code — from building an optical e-commerce platform with OCR capabilities to cloud-native QR code services. I'm proactive, quick to learn, and ready to grow as a developer in a real team environment.
+      </p>
+      <p data-lang="pt">
+        Adoro resolver problemas reais com código — de plataformas de e-commerce com OCR a serviços de QR code nativos na nuvem. Sou proativo, aprendo rápido e estou pronto para crescer como dev em um ambiente de equipe real.
+      </p>
+      <div class="about-tags">
+        <span class="tag tag-orange">Java</span>
+        <span class="tag tag-purple">Spring Boot</span>
+        <span class="tag tag-cyan">AWS</span>
+        <span class="tag tag-green">REST APIs</span>
+        <span class="tag tag-orange">Docker</span>
+        <span class="tag tag-cyan">PostgreSQL</span>
+        <span class="tag tag-purple">Angular</span>
+        <span class="tag tag-green">Git</span>
+      </div>
+    </div>
+    <div>
+      <div class="about-card">
+        <div class="edu-item">
+          <div class="edu-school">FACENS</div>
+          <div class="edu-degree" data-lang="en">Systems Analysis & Development</div>
+          <div class="edu-degree" data-lang="pt">Análise e Desenvolvimento de Sistemas</div>
+          <div class="edu-year">2024 — 2026 · <span data-lang="en">Final semester</span><span data-lang="pt">Último semestre</span></div>
+        </div>
+        <div class="divider"></div>
+        <div class="edu-item" style="margin-bottom:0">
+          <div class="edu-school">Udemy</div>
+          <div class="edu-degree" data-lang="en">Java Complete — OOP + Projects</div>
+          <div class="edu-degree" data-lang="pt">Java Completo — POO + Projetos</div>
+          <div class="edu-year" data-lang="en">Completed ✓</div>
+          <div class="edu-year" data-lang="pt">Concluído ✓</div>
+        </div>
+        <div class="divider"></div>
+        <div class="lang-item">
+          <span class="lang-name" data-lang="en">🇧🇷 Portuguese</span>
+          <span class="lang-name" data-lang="pt">🇧🇷 Português</span>
+          <span class="lang-level" data-lang="en">Native</span>
+          <span class="lang-level" data-lang="pt">Nativo</span>
+        </div>
+        <div class="lang-item" style="margin:0">
+          <span class="lang-name" data-lang="en">🇺🇸 English</span>
+          <span class="lang-name" data-lang="pt">🇺🇸 Inglês</span>
+          <span class="lang-level" data-lang="en">Advanced (CNA ✓)</span>
+          <span class="lang-level" data-lang="pt">Avançado (CNA ✓)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-tag" data-lang="en">Technical skills</div>
+  <div class="section-tag" data-lang="pt">Habilidades técnicas</div>
+  <h2 class="section-title reveal">
+    <span data-lang="en">My toolkit.</span>
+    <span data-lang="pt">Meu arsenal.</span>
+  </h2>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-card-bar" style="background: linear-gradient(90deg,#7c3aed,#a78bfa)"></div>
+      <div class="skill-card-icon">☕</div>
+      <div class="skill-card-title" data-lang="en">Backend</div>
+      <div class="skill-card-title" data-lang="pt">Backend</div>
+      <div class="skill-card-sub" data-lang="en">Main focus — Java ecosystem</div>
+      <div class="skill-card-sub" data-lang="pt">Foco principal — ecossistema Java</div>
+      <div class="skill-pills">
+        <span class="skill-pill pill-main">Java 21</span>
+        <span class="skill-pill pill-main">Spring Boot</span>
+        <span class="skill-pill pill-main">Spring Data JPA</span>
+        <span class="skill-pill pill-main">Hibernate</span>
+        <span class="skill-pill pill-main">REST API</span>
+        <span class="skill-pill pill-sec">Node.js</span>
+        <span class="skill-pill pill-sec">Python</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-bar" style="background: linear-gradient(90deg,#ff6b35,#f7931e)"></div>
+      <div class="skill-card-icon">🗄️</div>
+      <div class="skill-card-title" data-lang="en">Databases</div>
+      <div class="skill-card-title" data-lang="pt">Bancos de Dados</div>
+      <div class="skill-card-sub" data-lang="en">SQL & NoSQL experience</div>
+      <div class="skill-card-sub" data-lang="pt">Experiência SQL & NoSQL</div>
+      <div class="skill-pills">
+        <span class="skill-pill pill-db">PostgreSQL</span>
+        <span class="skill-pill pill-db">MySQL</span>
+        <span class="skill-pill pill-db">SQL Server</span>
+        <span class="skill-pill pill-db">MongoDB</span>
+        <span class="skill-pill pill-db">H2</span>
+        <span class="skill-pill pill-db">JDBC</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-bar" style="background: linear-gradient(90deg,#00d4ff,#06ffa5)"></div>
+      <div class="skill-card-icon">☁️</div>
+      <div class="skill-card-title" data-lang="en">Cloud & DevOps</div>
+      <div class="skill-card-title" data-lang="pt">Cloud & DevOps</div>
+      <div class="skill-card-sub" data-lang="en">Real AWS deployment experience</div>
+      <div class="skill-card-sub" data-lang="pt">Experiência real de deploy na AWS</div>
+      <div class="skill-pills">
+        <span class="skill-pill pill-tool">AWS EC2</span>
+        <span class="skill-pill pill-tool">AWS S3</span>
+        <span class="skill-pill pill-tool">Docker</span>
+        <span class="skill-pill pill-tool">Git</span>
+        <span class="skill-pill pill-tool">GitHub</span>
+        <span class="skill-pill pill-tool">Maven</span>
+        <span class="skill-pill pill-tool">Postman</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-bar" style="background: linear-gradient(90deg,#f7931e,#fcd34d)"></div>
+      <div class="skill-card-icon">🎨</div>
+      <div class="skill-card-title" data-lang="en">Frontend</div>
+      <div class="skill-card-title" data-lang="pt">Frontend</div>
+      <div class="skill-card-sub" data-lang="en">Fullstack capable when needed</div>
+      <div class="skill-card-sub" data-lang="pt">Capaz de atuar no fullstack quando necessário</div>
+      <div class="skill-pills">
+        <span class="skill-pill pill-front">Angular</span>
+        <span class="skill-pill pill-front">TypeScript</span>
+        <span class="skill-pill pill-front">JavaScript</span>
+        <span class="skill-pill pill-front">HTML5</span>
+        <span class="skill-pill pill-front">CSS3</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-bar" style="background: linear-gradient(90deg,#7c3aed,#00d4ff)"></div>
+      <div class="skill-card-icon">🧠</div>
+      <div class="skill-card-title" data-lang="en">Concepts</div>
+      <div class="skill-card-title" data-lang="pt">Conceitos</div>
+      <div class="skill-card-sub" data-lang="en">Software engineering foundations</div>
+      <div class="skill-card-sub" data-lang="pt">Fundamentos de engenharia de software</div>
+      <div class="skill-pills">
+        <span class="skill-pill pill-main">OOP</span>
+        <span class="skill-pill pill-main">SOLID</span>
+        <span class="skill-pill pill-main">MVC</span>
+        <span class="skill-pill pill-sec">CRUD</span>
+        <span class="skill-pill pill-sec">Data Modeling</span>
+        <span class="skill-pill pill-tool">Figma</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-tag" data-lang="en">Featured projects</div>
+  <div class="section-tag" data-lang="pt">Projetos em destaque</div>
+  <h2 class="section-title reveal">
+    <span data-lang="en">Things I've<br>built.</span>
+    <span data-lang="pt">Coisas que<br>construí.</span>
+  </h2>
+  <div class="projects-grid">
+
+    <!-- QR CODE -->
+    <div class="project-card reveal">
+      <div class="project-accent" style="background: linear-gradient(90deg,#00d4ff,#06ffa5)"></div>
+      <div class="project-header">
+        <div class="project-icon-row">
+          <div class="project-icon" style="background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.2)">📱</div>
+          <div class="project-meta">
+            <div class="project-name">QR Code Generator</div>
+            <div class="project-type" data-lang="en">Backend API · Cloud</div>
+            <div class="project-type" data-lang="pt">API Backend · Cloud</div>
+          </div>
+        </div>
+      </div>
+      <p class="project-desc">
+        <span data-lang="en">A production-ready Spring Boot service that generates QR codes from any text input and stores them directly in AWS S3. Containerized with Docker for easy deployment anywhere.</span>
+        <span data-lang="pt">Um serviço Spring Boot pronto para produção que gera QR codes a partir de qualquer texto e os armazena diretamente no AWS S3. Containerizado com Docker para deploy em qualquer ambiente.</span>
+      </p>
+      <ul class="project-features">
+        <li data-lang="en">POST /qrcode endpoint returns a permanent S3 URL</li>
+        <li data-lang="pt">Endpoint POST /qrcode retorna URL permanente no S3</li>
+        <li data-lang="en">Google ZXing library for QR generation (200×200px PNG)</li>
+        <li data-lang="pt">Biblioteca Google ZXing para geração de QR (PNG 200×200px)</li>
+        <li data-lang="en">Fully Dockerized with environment variable configuration</li>
+        <li data-lang="pt">Totalmente Dockerizado com configuração por variáveis de ambiente</li>
+        <li data-lang="en">AWS SDK v2 integration with S3 bucket auto-configuration</li>
+        <li data-lang="pt">Integração AWS SDK v2 com configuração automática do bucket S3</li>
+      </ul>
+      <div class="project-tech">
+        <span class="skill-pill pill-main">Java 21</span>
+        <span class="skill-pill pill-main">Spring Boot</span>
+        <span class="skill-pill pill-tool">AWS S3</span>
+        <span class="skill-pill pill-tool">Docker</span>
+        <span class="skill-pill pill-sec">ZXing</span>
+        <span class="skill-pill pill-tool">Maven</span>
+      </div>
+      <div class="project-footer">
+        <a href="https://github.com/GabrielOliveira342/qrcode-generator" target="_blank" class="project-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span data-lang="en">View Source</span>
+          <span data-lang="pt">Ver Código</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- TECH VISION -->
+    <div class="project-card reveal">
+      <div class="project-accent" style="background: linear-gradient(90deg,#7c3aed,#ff6b35)"></div>
+      <div class="project-header">
+        <div class="project-icon-row">
+          <div class="project-icon" style="background:rgba(124,58,237,.08);border-color:rgba(124,58,237,.2)">👁️</div>
+          <div class="project-meta">
+            <div class="project-name">TechVision</div>
+            <div class="project-type" data-lang="en">Fullstack · E-commerce · AI/OCR</div>
+            <div class="project-type" data-lang="pt">Fullstack · E-commerce · IA/OCR</div>
+          </div>
+        </div>
+      </div>
+      <p class="project-desc">
+        <span data-lang="en">A complete optical e-commerce platform with a standout feature: automated reading of medical prescriptions via OCR. Built fullstack from Angular frontend to Spring Boot backend, deployed on AWS EC2.</span>
+        <span data-lang="pt">Plataforma completa de e-commerce para óticas com diferencial: leitura automatizada de receitas oftalmológicas via OCR. Construída fullstack do Angular ao Spring Boot, hospedada na AWS EC2.</span>
+      </p>
+      <ul class="project-features">
+        <li data-lang="en">OCR pipeline in Python reads and parses medical prescriptions</li>
+        <li data-lang="pt">Pipeline OCR em Python lê e processa receitas médicas</li>
+        <li data-lang="en">Angular + TypeScript frontend fully integrated with backend API</li>
+        <li data-lang="pt">Frontend Angular + TypeScript totalmente integrado à API backend</li>
+        <li data-lang="en">Spring Boot REST API deployed live on AWS EC2 (sa-east-1)</li>
+        <li data-lang="pt">API REST Spring Boot deployada na AWS EC2 (sa-east-1)</li>
+        <li data-lang="en">MongoDB for flexible product and prescription data storage</li>
+        <li data-lang="pt">MongoDB para armazenamento flexível de produtos e receitas</li>
+      </ul>
+      <div class="project-tech">
+        <span class="skill-pill pill-main">Spring Boot</span>
+        <span class="skill-pill pill-front">Angular</span>
+        <span class="skill-pill pill-sec">Python OCR</span>
+        <span class="skill-pill pill-db">MongoDB</span>
+        <span class="skill-pill pill-tool">AWS EC2</span>
+        <span class="skill-pill pill-sec">Node.js</span>
+      </div>
+      <div class="project-footer">
+        <a href="https://github.com/GabrielOliveira342/Backend_TechVision" target="_blank" class="project-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span data-lang="en">View Backend</span>
+          <span data-lang="pt">Ver Backend</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- WEB SERVICES -->
+    <div class="project-card reveal">
+      <div class="project-accent" style="background: linear-gradient(90deg,#ff6b35,#fcd34d)"></div>
+      <div class="project-header">
+        <div class="project-icon-row">
+          <div class="project-icon" style="background:rgba(255,107,53,.08);border-color:rgba(255,107,53,.2)">🔗</div>
+          <div class="project-meta">
+            <div class="project-name">Web Services API</div>
+            <div class="project-type" data-lang="en">Backend · REST · JPA/Hibernate</div>
+            <div class="project-type" data-lang="pt">Backend · REST · JPA/Hibernate</div>
+          </div>
+        </div>
+      </div>
+      <p class="project-desc">
+        <span data-lang="en">A fully structured RESTful API demonstrating clean layered architecture with Spring Boot. Dual-database setup: H2 for development/testing and PostgreSQL for production.</span>
+        <span data-lang="pt">API RESTful completamente estruturada demonstrando arquitetura em camadas limpa com Spring Boot. Configuração dual de banco: H2 para dev/testes e PostgreSQL para produção.</span>
+      </p>
+      <ul class="project-features">
+        <li data-lang="en">Full CRUD with layered architecture (Resource → Service → Repository)</li>
+        <li data-lang="pt">CRUD completo com arquitetura em camadas (Resource → Service → Repository)</li>
+        <li data-lang="en">JPA/Hibernate ORM with complete object-relational mapping</li>
+        <li data-lang="pt">ORM JPA/Hibernate com mapeamento objeto-relacional completo</li>
+        <li data-lang="en">H2 in-memory for tests + PostgreSQL for production</li>
+        <li data-lang="pt">H2 em memória para testes + PostgreSQL para produção</li>
+        <li data-lang="en">All endpoints validated and tested with Postman</li>
+        <li data-lang="pt">Todos os endpoints validados e testados com Postman</li>
+      </ul>
+      <div class="project-tech">
+        <span class="skill-pill pill-main">Java</span>
+        <span class="skill-pill pill-main">Spring Boot</span>
+        <span class="skill-pill pill-main">JPA/Hibernate</span>
+        <span class="skill-pill pill-db">PostgreSQL</span>
+        <span class="skill-pill pill-db">H2</span>
+        <span class="skill-pill pill-tool">Postman</span>
+      </div>
+      <div class="project-footer">
+        <a href="https://github.com/GabrielOliveira342" target="_blank" class="project-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-bg"></div>
+  <div class="contact-content reveal">
+    <div class="section-tag" style="justify-content:center" data-lang="en">Get in touch</div>
+    <div class="section-tag" style="justify-content:center" data-lang="pt">Entre em contato</div>
+    <h2 class="contact-title">
+      <span data-lang="en">Let's build<br><span class="title-grad">something great.</span></span>
+      <span data-lang="pt">Vamos criar<br><span class="title-grad">algo incrível.</span></span>
+    </h2>
+    <p class="contact-sub">
+      <span data-lang="en">I'm currently open to internship and junior developer positions. Have a project in mind or want to talk? I'd love to hear from you.</span>
+      <span data-lang="pt">Estou disponível para estágios e vagas de desenvolvedor júnior. Tem um projeto em mente ou quer conversar? Adoraria ouvir de você.</span>
+    </p>
+    <div class="contact-links">
+      <a href="mailto:gabrielalbertodeoliveira17@gmail.com" class="contact-card">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        gabrielalbertodeoliveira17@gmail.com
+      </a>
+      <a href="https://github.com/GabrielOliveira342" target="_blank" class="contact-card">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        GabrielOliveira342
+      </a>
+      <a href="tel:+5515996251303" class="contact-card">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        (15) 99625-1303
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-text">© 2025 Gabriel Alberto de Oliveira</div>
+  <div class="footer-made">
+    <span data-lang="en">Built with <span>❤</span> and too much coffee</span>
+    <span data-lang="pt">Feito com <span>❤</span> e muito café</span>
+  </div>
+</footer>
+
+<script>
+// ── LANG TOGGLE ──
+function setLang(lang) {
+  document.body.classList.toggle('lang-pt', lang === 'pt');
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+  document.documentElement.lang = lang;
+}
+
+// ── SCROLL REVEAL ──
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ── ACTIVE NAV LINKS ──
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text)' : '';
+  });
+}, { passive: true });
+
+// ── SMOOTH PARALLAX ORBS (mild) ──
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  const orb1 = document.querySelector('.orb1');
+  const orb2 = document.querySelector('.orb2');
+  if (orb1) orb1.style.transform = `translateY(${y * 0.08}px)`;
+  if (orb2) orb2.style.transform = `translateY(${-y * 0.05}px)`;
+}, { passive: true });
+</script>
+</body>
+</html>
